@@ -129,11 +129,11 @@ fun documentType(arg: String) {
 fun convertedTemp(arg1: Float, arg2: Char) {
     if (arg2 == 'C') {
         val resultTemp = arg1 * 1.8f + 32.0f
-        println ("$resultTemp F")
+        println("$resultTemp F")
     } else if (arg2 == 'F') {
         val resultTemp = (arg1 - 32.0f) / 1.8f
-        println ("$resultTemp C")
-    } else println ("Conversion failed")
+        println("$resultTemp C")
+    } else println("Conversion failed")
 }
 
 //Задание 7: "Подбор одежды по погоде"
@@ -145,7 +145,7 @@ fun convertedTemp(arg1: Float, arg2: Char) {
 //При температурах ниже -30 и выше +35 рекомендуйте не выходить
 //из дома.
 //
-fun clothesType (arg: Int) {
+fun clothesType(arg: Int) {
     when {
         arg < -30 || arg > 35 -> println("Stay home")
         arg < 10 -> println("Wear a coat and a hat")
@@ -153,13 +153,14 @@ fun clothesType (arg: Int) {
         arg > 18 -> println("Wear a T-shirt and shorts")
     }
 }
+
 //Задание 8: "Выбор фильма по возрасту"
 //
 //Кинотеатр предлагает фильмы разных возрастных категорий.
 //Напишите функцию, которая принимает возраст зрителя и возвращает
 //доступные для него категории фильмов: "детские" (от 0 до 9),
 //"подростковые" (от 10 до 18), "18+" для остальных.
-fun movieAgeSelection (arg: Int) {
+fun movieAgeSelection(arg: Int) {
     if (arg in 0..9) {
         println("Movies for kids")
     } else if (arg in 10..<18) {
