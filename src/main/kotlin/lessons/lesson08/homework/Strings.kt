@@ -135,7 +135,9 @@ fun creditCard() {
 
 fun email() {
     val email = "username@example.com"
-    val emailFormatted = email.replace("@", " at ").replace(".", " dot ")
+    val emailFormatted = email.
+    replace("@", " at ").
+    replace(".", " dot ")
     println(emailFormatted)
 }
 

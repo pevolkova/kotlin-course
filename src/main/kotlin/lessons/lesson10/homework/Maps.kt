@@ -24,7 +24,7 @@ val ex1 = mapOf<Int, Int>()
 //2. Создайте словарь, инициализированный несколькими парами
 //"ключ-значение", где ключи - float, а значения - double
 
-val ex2 = mapOf(10f to 9.0, 519f to 81.0, 48f to 7.8)
+val ex2 = mapOf(10.0f to 9.0, 519.7f to 81.0, 48.5f to 7.8)
 
 //3. Создайте изменяемый словарь, где ключи - целые числа, а
 //значения - строки.
@@ -146,7 +146,7 @@ fun find() {
 //Задачи на подбор оптимального типа для словаря
 //1. Словарь библиотека: Ключи - автор книги, значения - список книг
 
-val library = mapOf<String, MutableList<String>>()
+val library = mutableMapOf<String, MutableList<String>>()
 
 //2. Справочник растений: Ключи - типы растений (например, "Цветы",
 //"Деревья"), значения - списки названий растений
@@ -161,10 +161,10 @@ val teams = mapOf<String, MutableList<String>>()
 //4. Курс лечения: Ключи - даты, значения - список препаратов
 //принимаемых в дату
 
-val treatment = mapOf<String, MutableList<String>>()
+val treatment = mutableMapOf<String, MutableList<String>>()
 
 //5. Словарь путешественника: Ключи - страны, значения - словари из
 //городов со списком интересных мест.
 
-val places = mapOf<String, Map<String, MutableList<String>>>()
+val places = mapOf<String, MutableMap<String, MutableList<String>>>()
 

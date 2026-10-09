@@ -228,7 +228,8 @@ fun minMax() {
     var max = minMax[0]
     while (i < minMax.size) {
         if (minMax[i] < min) min = minMax[i]
-        if (minMax[i] > max) max = minMax[i]
+        else (minMax[i] > max)
+        max = minMax[i]
         i++
     }
     println("Минимальное число: $min, максимальное число: $max")
@@ -240,7 +241,9 @@ fun minMax() {
 fun evenNumbers() {
     val list1 = listOf<Int>(9, 85, 101, 983, 94, 36, 257, -4)
     val finalList = mutableListOf<Int>()
-    for (i in list1) if (i % 2 == 0) finalList.add(i)
+    for (i in list1) {
+        if (i % 2 == 0) finalList.add(i)
+    }
     println(finalList)
 }
 
