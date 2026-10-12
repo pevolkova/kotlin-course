@@ -6,6 +6,8 @@ fun main() {
     printNumbersUntil(-3)
     findFirstNegative(listOf(1, 8, -10, 6))
     findFirstNegative(listOf(5, 13, 18, 23))
+    processList(listOf("Пироги", "Киши", null, "Камыши"))
+    println(ex4(listOf(9, 11, 2, 15, 0)))
 }
 
 //Задачи на сигнатуру метода
@@ -33,26 +35,30 @@ fun ex3(a: String) {
 //4. Принимает список целых чисел и возвращает среднее значение типа Double.
 
 fun ex4(a: List<Int>): Double {
-    return 2.8
+    var result = 0.0
+    for (i in a.indices) {
+        result += a[i].toDouble()
+    }
+    return result / a.size
 }
 
 //5. Принимает nullable строку и возвращает её длину в виде nullable целого
 //числа и доступна только в текущем файле.
 
 private fun ex5(a: String?): Int? {
-    return 5
+    return a?.length
 }
 
 //6. Не принимает аргументов и возвращает nullable вещественное число.
 
 fun ex6(): Float? {
-    return 8F
+    return null
 }
 
 //7. Принимает nullable список целых чисел, не возвращает значения и
 //доступна только в текущем файле.
 
-private fun ex7(a: List<Int?>) {
+private fun ex7(a: List<Int>?) {
 
 }
 
@@ -95,8 +101,8 @@ fun isEven(a: Int): Boolean {
 //прекратить выполнение с помощью return без вывода сообщений.
 
 fun printNumbersUntil(n: Int) {
-    for (i in 1..n) println(i)
     if (n < 1) return
+    for (i in 1..n) println(i)
 }
 
 //14. Создайте функцию findFirstNegative, которая принимает список целых
@@ -105,7 +111,9 @@ fun printNumbersUntil(n: Int) {
 
 fun findFirstNegative(a: List<Int>): Int? {
     for (i in a) {
-        if (i < 0) return i
+        if (i < 0) {
+            return i
+        }
     }
     return null
 }
@@ -115,5 +123,8 @@ fun findFirstNegative(a: List<Int>): Int? {
 //null значение, функция должна прекратить выполнение с помощью return
 //без возврата значения.
 //
-//fun processList
-
+fun processList(list: List<String?>) {
+    for (i in list) {
+        println(i ?: return)
+    }
+}
