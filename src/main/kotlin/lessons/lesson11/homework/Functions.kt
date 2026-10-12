@@ -6,6 +6,8 @@ fun main() {
     printNumbersUntil(-3)
     findFirstNegative(listOf(1, 8, -10, 6))
     findFirstNegative(listOf(5, 13, 18, 23))
+//    printPositive(listOf(-9, -7, 0, 4))
+    processList(listOf("Пироги", "Киши", null, "Камыши"))
 }
 
 //Задачи на сигнатуру метода
@@ -115,5 +117,8 @@ fun findFirstNegative(a: List<Int>): Int? {
 //null значение, функция должна прекратить выполнение с помощью return
 //без возврата значения.
 //
-//fun processList
-
+fun processList(list: List<String?>) {
+    for (i in list) {
+        println(i ?: return)
+    }
+}
