@@ -58,6 +58,9 @@ fun main() {
     checkEmpty()
     checkNotEmpty()
     takeElement()
+    joining()
+    sumCount()
+    processing()
 }
 
 //Задачи на приведение коллекции к значению
@@ -69,7 +72,7 @@ fun size() {
 
 //2. Проверить, что коллекция пустая
 
-val ex1 = listOf<String>()
+val ex1 = listOf<String>("meercat", "elephant", "mouse")
 
 fun checkEmpty() {
     println(ex1.isEmpty())
@@ -84,24 +87,65 @@ fun checkNotEmpty() {
 //4. Взять элемент по индексу или создать значение если индекса не существует
 
 fun takeElement(list: List<String> = listOf("Beatles", "Abba", "Queen")) {
-    println(list.getOrElse(2) {"Abba"})
+    println(list.getOrElse(2) { "Abba" })
 }
 
 //5. Собрать коллекцию в строку
+
+fun joining() {
+    println(ex1.joinToString())
+}
+
 //6. Посчитать сумму всех значений
+
+val ex2 = listOf(1, 7, 25)
+fun sumCount() {
+    println(ex2.sum())
+
+
 //7. Посчитать среднее
+
+    println(ex2.average())
+
 //8. Взять максимальное число
+
+    println(ex2.maxOrNull())
+
 //9. Взять минимальное число
+
+    println(ex2.minOrNull())
+
 //10. Взять первое число или null
+
+    println(ex2.firstOrNull())
+
 //11. Проверить что коллекция содержит элемент
+
+    println(ex1.contains("meercat"))
+    println("meercat" in ex1)
+}
 
 //Реши задачи подходящим методом для работы с коллекцией. Для каждой задачи есть свой метод, не повторяйся. Список методов в рекомендациях под заданиями.
 
 //Задачи на обработку коллекций
 //12. Отфильтровать коллекцию по диапазону 18-30
+
+fun processing() {
+
+    println(ex2.filter { it in 18..30 })
+
 //13. Выбрать числа, которые не делятся на 2 и 3 одновременно
+
+   println(ex2.filterNot { it % 2 == 0 && it % 3 == 0 })
+
 //14. Очистить текстовую коллекцию от null элементов
+
+    println(ex2.filterNotNull())
+
 //15. Преобразовать текстовую коллекцию в коллекцию длин слов
+
+    ex1.map {it.length}
+
 //16. Преобразовать текстовую коллекцию в мапу, где ключи - перевёрнутые слова, а значения - длина слов
 //17. Отсортировать список в алфавитном порядке
 //18. Взять первые 3 элемента списка
@@ -110,6 +154,8 @@ fun takeElement(list: List<String> = listOf("Beatles", "Abba", "Queen")) {
 //21. Очистить список от дублей
 //22. Отсортировать список по убыванию
 //23. Взять последние 3 элемента списка
+
+}
 
 //Реши задачи ниже в отдельных функциях.
 //
@@ -256,5 +302,5 @@ fun findAge(ages: List<Int?>, reference: Int): Int? {
 }
 
 fun findAge1(ages: List<Int?>, reference: Int): Int? {
-    return ages.firstOrNull(){it !== null && it > reference}
+    return ages.firstOrNull() { it !== null && it > reference }
 }
