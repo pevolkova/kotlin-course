@@ -72,7 +72,7 @@ fun size() {
 
 //2. Проверить, что коллекция пустая
 
-val ex1 = listOf<String>("meercat", "elephant", "mouse")
+val ex1 = listOf<String>("meercat", "panda", "elephant", "mouse", "panda")
 
 fun checkEmpty() {
     println(ex1.isEmpty())
@@ -136,7 +136,7 @@ fun processing() {
 
 //13. Выбрать числа, которые не делятся на 2 и 3 одновременно
 
-   println(ex2.filterNot { it % 2 == 0 && it % 3 == 0 })
+    println(ex2.filterNot { it % 2 == 0 && it % 3 == 0 })
 
 //14. Очистить текстовую коллекцию от null элементов
 
@@ -144,16 +144,42 @@ fun processing() {
 
 //15. Преобразовать текстовую коллекцию в коллекцию длин слов
 
-    ex1.map {it.length}
+    println(ex1.map { it.length })
 
 //16. Преобразовать текстовую коллекцию в мапу, где ключи - перевёрнутые слова, а значения - длина слов
+
+    println(ex1.associate { it.reversed() to it.length })
+
 //17. Отсортировать список в алфавитном порядке
+
+    println(ex1.sorted())
+
 //18. Взять первые 3 элемента списка
+
+    println(ex1.take(3))
+
 //19. Распечатать квадраты элементов списка
+
+    println(ex2.map { it * it })
+
 //20. Группировать список по первой букве слов
+
+    println(ex1.groupBy {
+        it[0]
+    })
+
 //21. Очистить список от дублей
+
+    println(ex1.distinct())
+
 //22. Отсортировать список по убыванию
+
+    println(ex2.sortedDescending())
+    println(ex1.sortedDescending())
+
 //23. Взять последние 3 элемента списка
+
+    println(ex1.takeLast(3))
 
 }
 
