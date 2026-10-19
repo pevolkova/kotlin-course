@@ -92,9 +92,7 @@ fun multiplyByTwo(a: Int): Int = a * 2
 //12. Создайте функцию isEven, которая принимает целое число и возвращает true,
 //если число чётное, и false в противном случае.
 
-fun isEven(a: Int): Boolean {
-    return a % 2 == 0
-}
+fun isEven(a: Int): Boolean = a % 2 == 0
 
 //13. Напишите функцию printNumbersUntil, которая принимает целое число n и
 //выводит на экран числа от 1 до n. Если число n меньше 1, функция должна
