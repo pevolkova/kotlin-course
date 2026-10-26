@@ -10,14 +10,14 @@ fun main() {
     val bottomContainer = BottomContainer()
     bottomContainer.addBottom()
 
-//    val alternatingStrings = AlternatingStrings(
-//        listOf(
-//            "String8",
-//            "String9",
-//            "String10"
-//        )
-//    )
-//    alternatingStrings.alternatingStrings()
+    val alternatingStrings = AlternatingStrings(
+        listOf(
+            "String8",
+            "String9",
+            "String10"
+        )
+    )
+    alternatingStrings.alternatingStrings()
 
     val sorting = Sorting()
     sorting.addAndSort("String11")
