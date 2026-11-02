@@ -1,5 +1,42 @@
 package lessons.lesson14.homework.task6
 
+fun main() {
+    val shelf = Shelf(15)
+    shelf.addItem("Apple")
+    shelf.addItem("Pear")
+    shelf.addItem("Cake")
+    shelf.removeItem("Pear")
+    println(shelf.containsItem("Pie"))
+    println(shelf.getItems())
+
+    val shelf1 = Shelf (17)
+    shelf1.addItem("Can")
+    shelf1.addItem("Bottle")
+    shelf1.addItem("Carrot")
+    println(shelf1.getItems())
+
+    val shelf2 = Shelf (25)
+    shelf2.addItem("Milk")
+    shelf2.addItem("Banana")
+    shelf2.addItem("Cheese")
+    println(shelf2.getItems())
+
+    val shelf3 = Shelf (41)
+    shelf3.addItem("Cucumber")
+    shelf3.addItem("Beetroot")
+    shelf3.addItem("Turkey")
+    println(shelf3.getItems())
+
+    val rack = Rack (mutableListOf(shelf, shelf1, shelf2),
+        4)
+    println(rack.addShelf(shelf2))
+    println(rack.shelves.toString())
+    rack.removeShelf(0)
+    println(rack.shelves.toString())
+    rack.addItem("Raisin")
+    println(rack.shelves.toString())
+}
+
 //Задание 6. Стеллаж и полки.
 //
 //Цель задания: Создать систему управления складским пространством
@@ -57,4 +94,8 @@ class Shelf(val capacity: Int) {
     fun containsItem(itemName: String) = items.contains(itemName)
 
     fun getItems() = items.toList()
+
+    override fun toString(): String {
+        return "Shelf with $capacity symbols contains $items"
+    }
 }
