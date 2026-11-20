@@ -10,8 +10,12 @@ fun Array<Int>?.pair(): Pair<Int?, Int?> {
     return if (this == null) {
         null to null
     } else {
-        this.first() to this.last()
+        first() to last()
     }
+}
+
+fun Array<Int>.pair1(): Pair<Int?, Int?> {
+    return firstOrNull() to lastOrNull()
 }
 
 //2. Создайте функцию-расширение для изменяемого списка элементов:
@@ -22,14 +26,14 @@ fun Array<Int>?.pair(): Pair<Int?, Int?> {
 //если в функцию передано true и по убыванию, если false (используем функции sort()
 //и sortDescending()
 
-fun <T : Comparable<T>> MutableList<T>.notMutable(arg: Boolean): List<T> {
-    if (arg) {
-        this.sort()
+fun <T : Comparable<T>> MutableList<T>.notMutable(isAscending: Boolean): List<T> {
+    return if (isAscending) {
+        sorted()
     } else {
-        this.sortDescending()
+        sortedDescending()
     }
-    return this.toList()
 }
+
 
 //3. Создайте функцию-расширение для nullable словаря с дженериком:
 //1. Ключ является дженериком
@@ -41,8 +45,15 @@ fun <T : Comparable<T>> MutableList<T>.notMutable(arg: Boolean): List<T> {
 //по индексу из аргумента, если такого индекса нет - значением будет null
 
 fun <T, R> Map<T, List<R>>?.mapToString(arg: Int): Map<String, R?>? {
-    return this?.mapKeys { it.key.toString() }
-        ?.mapValues { it.value.getOrNull(arg) }
+    if (this == null) {
+        return null
+    } else {
+        val result = mutableMapOf<String, R?>()
+        for ((key, value) in this) {
+            result[key.toString()] = value.getOrNull(arg)
+        }
+        return result
+    }
 }
 
 //4. Реализуйте метод расширения within для класса Number, который проверяет,
@@ -58,6 +69,7 @@ fun Number.within(other: Number, deviation: Number): Boolean {
     return actual.absoluteValue <= deviation.toDouble()
 }
 
+
 //5. Реализуйте для класса String два метода расширения: encrypt и decrypt. Метод
 //encrypt должен сдвигать каждый символ исходной строки на заданное число позиций
 //вперед по таблице Unicode, а метод decrypt — на то же число позиций назад. Оба
@@ -70,6 +82,7 @@ fun Number.within(other: Number, deviation: Number): Boolean {
 fun String.encrypt(base: Int): String {
     return map { it + base }.joinToString("")
 }
+
 fun String.decrypt(base: Int): String {
     return map { it - base }.joinToString("")
 }
@@ -82,21 +95,31 @@ fun String.decrypt(base: Int): String {
 //https://x.com/SadNSober_/status/1370280031616897026
 //Если ссылка не открывается по понятным причинам, вот скриншот
 
-    fun String.twitterize(authors: List<String>) {
-        var counter = 0
-        for (l in this) {
-            println(authors[counter++])
-            println(l.uppercase())
-            println()
-            if (counter >= authors.size) {
-                counter = 0
-            }
+fun String.twitterize(authors: List<String>) {
+    var counter = 0
+    for (l in this) {
+        println(authors[counter++])
+        println(l.uppercase())
+        println()
+        if (counter >= authors.size) {
+            counter = 0
         }
     }
+}
+
 
 fun main() {
     println(arrayOf(1, 7, 23, 15).pair())
     println(null.pair())
     println(mutableListOf(4, 6, 709, 1).notMutable(true))
     println(mutableListOf("Окно", "Словарь", "Улица", "Магазин").notMutable(false))
+    val map = mapOf(
+        "t" to listOf(2, 3, 7),
+        "r" to listOf(3, 4),
+        "7" to listOf(8, 9)
+    )
+    println(map.mapToString(0))
+    println(map.mapToString(2))
+    val nullMap: Map<Int, List<String>>? = null
+    println(nullMap.mapToString(0))
 }
